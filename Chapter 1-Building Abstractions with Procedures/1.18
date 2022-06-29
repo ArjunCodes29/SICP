@@ -1,0 +1,15 @@
+#lang sicp
+(define (double x)
+  (* 2 x))
+(define (halve x)
+  (/ x 2))
+
+
+(define (fast-* a b)
+  (define(fast*-inator a b n)
+  (cond ((= b 0) n)
+        ((even? b) (fast*-inator (double a) (halve b) n))
+        (else  (fast*-inator a (- b 1) (+ n a)))))
+  (fast*-inator a b 0))
+  
+(fast-* 2 7

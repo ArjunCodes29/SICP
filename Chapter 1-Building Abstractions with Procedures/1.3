@@ -1,0 +1,28 @@
+(define (square x) (* x x))
+(define  (sumOfSquares x y) (+ square x  square y))
+(define (biggestNums x y z) (cond ((< z x) and (< z y) (x y))
+                                  ((< x y) and (< x z) (z y))
+                                  (else (z x)))
+
+(define (procedure  x y z)
+(sumOfSquares(biggestNums x y z))
+)
+
+#first line correct
+# second line correct (forgot brackets around square x but okay)
+#third line forgot prefix structure with and
+# little issue with procedure of biggest NUms not sure if you can output two variables like that
+#maybe you can then it should work
+
+(define (square x) (* x x)) 
+  
+ (define (squareSum x y) (+ (square x) (square y))) 
+  
+ (define (sumOfLargestTwoSquared x y z) 
+   (cond ((and (>= (+ x y) (+ y z)) (>= (+ x y) (+ x z))) (squareSum x y)) 
+         ((and (>= (+ x z) (+ y z)) (>= (+ x z) (+ x y))) (squareSum x z)) 
+         (else (squareSum y z)) 
+   ) 
+ ) 
+
+ reference answer 

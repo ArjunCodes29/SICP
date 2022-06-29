@@ -1,0 +1,36 @@
+ f(n) = n if n<3
+ f(n) = f(n - 1) + 2f(n - 2) + 3f(n - 3) if n>=  3
+
+ Recursive 
+(define (f n)
+  (cond ((< n 3) n)
+  (else (+ (f(- n 1)) (* 2 (f(- n 2))) (* 3 (f(- n 3)))))))
+ Iterative
+ we need some state variables
+ ending conditiion is that if n <3
+ so we need a counter that drops with every iteration
+ until it reaches 2
+we need 4 state variables
+1 counter
+3 for our expression
+
+
+I didnt get the iterative answers
+I found an answer online I will trace it and try and understand it
+#lang sicp
+ (define (f n) 
+   (define (f-i a b c count) 
+     (cond ((< n 3) n) 
+           ((<= count 0) a) 
+           (else (f-i (+ a (* 2 b) (* 3 c)) a b (- count 1))))) 
+   (f-i 2 1 0 (- n 2))) 
+  
+I will trace the answer for (f 4)
+f(n) = n if n<3
+ f(n) = f(n - 1) + 2f(n - 2) + 3f(n - 3) if n>=  3
+
+(f 4)
+(f-i 2 1 0 2 )
+(f-i 4 2 1 1)
+(f-i 11 4 2 0)
+11

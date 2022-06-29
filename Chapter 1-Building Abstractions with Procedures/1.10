@@ -1,0 +1,62 @@
+(A 1 10)
+(A(0)(A 1 (9))
+(A(0)((A(0)(A 1 (8))))
+...
+(A(0)(A(0)(A(0)A(0)(A(0)(A(0)A(0)(A(0)(A(0)(A 1 1)))))))))
+(A(0)(A(0)(A(0)A(0)(A(0)(A(0)A(0)(A(0)(A(0)(2)))))))))
+(A(0)(A(0)(A(0)A(0)(A(0)(A(0)A(0)(A(0)(4))))))))
+(A(0)(A(0)(A(0)A(0)(A(0)(A(0)A(0)(8)))))))
+(A(0)(A(0)(A(0)A(0)(A(0)(A(0)16))))))
+(A(0)(A(0)(A(0)A(0)(A(0)32)))))
+(A(0)(A(0)(A(0)A(0)64))))
+(A(0)(A(0)(A(0)128)))
+(A(0)(A(0)256)))
+(A(0)512))
+1024
+
+- Linear recursive process
+
+(A 2 4)
+(A(1)(A 2 3))
+(A(1)(A(1)(A 2 2)))
+(A(1)(A(1)(A(1)(A 2 1))))
+(A(1)(A(1)(A 1 2)))
+(A(1)(A(1)(A 0 (A 1 1))))
+(A(1)(A(1)(A 0 2)))
+(A(1)(A 1 4))
+... skipped steps... (because we know from part 1 that (A 1 n) is 2^n)
+(A 1 16)
+... skipped steps... (because we know from part 1 that (A 1 n) is 2^n)
+65536
+
+- This is weird i dont think its linear recursive but it is still recusrsive
+
+(A 3 3 )
+(A 2 (A 3 2))
+(A 2 (A 2(A 3 1)))
+(A 2 (A 2 2))
+(A 2 (A 1 A(2 1)))
+(A 2 (A 1 2 ))
+(A 2 (A 0 (A 1 1)))
+(A 2 (A 0 2))
+(A 2 4)
+... proven from last question...
+65536
+
+(f n) computes n*2
+(g n) computes 2^n 
+(h n) computes  2^(h n-1)
+
+good answers forgot case where n = 0 tho
+
+g 16
+
+n-2 [A(1)] (A 1 4)
+h 1= 2^1 g 1
+h 2= 2^2 g 2
+h 3=2^4  g 4
+h 4= 2^16  g 16
+h 5= 2^65536 g  65536
+
+2^ (h n-1)
+2^2^(h n-2)

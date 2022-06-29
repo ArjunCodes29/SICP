@@ -1,0 +1,39 @@
+a. 12.15/3x<0.1
+12.15/3<x/10
+12.15*10/3<x
+121.5/3<x
+41 times 
+
+ahhh so what i did wrong was that the number of times 
+p is /3x it is /3^x because you continously divide the same
+thing by there
+
+Then the problem is easier to do using tracing
+
+which gives the answer 5
+
+space know becomes interesting
+btw this     is linear recursive not tree recursive
+
+
+
+space
+
+Obviously as a gets larger you need more steps to divide it down 
+to a number less then 0.1. This is linear 
+0(a)
+
+steps
+I  know this a tree recursive process so the answer 
+must be something exponential
+
+I will draw tree diagrams with some values of A and see whats up
+
+So i found out that the number of nodes is equal to 
+2n + 1 where n is equal to the number of times we need to
+ divide the number for it to be less than 0.1
+
+And this n grows linearly as a grows so our answer for 
+steps is 
+
+0(a)

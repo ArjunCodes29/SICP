@@ -1,0 +1,13 @@
+#lang sicp
+(define (fast-expt-itv b n)
+  (define(fast-expt-inator a b n)
+  (cond ((= n 0) a)
+        ((even? n) (fast-expt-inator (* a (* b b )) b (/ n 2)))
+        (else(fast-expt-inator(* a b) b (- n 1)))))
+
+  (cond ((> n 1) (/ (fast-expt-inator 1 b n) 2))
+        (else (fast-expt-inator 1 b n))))
+(define (even? n)
+  (= (remainder n 2 )0))
+
+(fast-expt-itv 2 3)

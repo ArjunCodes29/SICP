@@ -1,0 +1,26 @@
+WITH NORmal order evaluation
+test 0 p will become
+  (if (= 0 0)
+      0
+      p))
+then since 0=0 the conesequent expression
+0 will be evaluated
+
+with 
+
+
+with applicative order evaluation
+the definiton of test is substiteud
+to yield
+
+if (= 0 0)
+    0
+    (p))
+
+p is substituded as p
+
+but that doesnt really change anything
+it shud still evaluate to 0...? 
+
+# so actually p keeps expanding to itself which cauess a uk so on dead loop type of thing
+#otherwise answer is fine

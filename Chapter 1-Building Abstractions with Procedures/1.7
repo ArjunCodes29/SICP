@@ -1,0 +1,69 @@
+Very small numbers
+Tracing code with small numbers
+guess=1.0
+x=0.000001
+answer=0.001
+
+first good enough
+1-0.000001 < 0.001
+false so 
+
+first improve guess
+1+0.00001 ~ 0.5
+
+0.25-0.00001 <0.001 is false
+so 
+
+improve again
+/ (0.5+0.00002) 2
+~0.25
+
+onw this also doesnt works
+
+so we repeat
+0.125
+
+0.06->0.036-0.000001
+0.03->
+0.0015
+
+Basicallly the answer to the square root is very small and the 
+tolerance is not small enough to get any sort of accurate answer
+
+Very large numbers
+x=1,000,000
+guess=1
+
+round 1
+good enough
+no doesnt work number is too large
+
+improve guess
+new guess becomes 500,000.5
+
+
+round 2
+good enough
+does not work the number is way too large
+
+improve guess
+500,000.5+1,000,000/500,000.5
+250001.249999
+
+again number too large to pass good enough
+
+round 3
+250001.249999+1,000,000/250001.249999
+ becomes 125000
+
+ IM really not seeing an issue here it just keeps becoming smaller
+
+# this one is super complex
+but i think im understanding it when i saw the answer
+basically 0.0001 is too little for the large numbers
+as before getting close enough when u do the improve guess
+u get the same result as the before guess
+becuase of lack of preciision or something
+so you can keep going until the change between
+ guess and improve guess is very small
+ its complex
