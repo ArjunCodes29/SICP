@@ -1,0 +1,45 @@
+1.21 
+was 199 1999 and 7
+
+1.22
+(define (search-for-primes start stop)
+  (timed-prime-test start)
+  (cond ((< stop start)10)
+  (else (search-for-primes (+ 2 start) stop))))
+
+for 1000 I got~ 4 
+1013 *** 5
+1019 *** 4
+1021 *** 3
+
+for 10,000~ 10
+10007 *** 9
+10009 *** 10
+10037 *** 11
+
+for 100,000 ~ 40
+100003 *** 40 
+100019 *** 45
+100043 *** 36
+
+for 1,000,000 ~83
+1000003 *** 83
+1000033 *** 84
+1000037 *** 83
+
+According to time complexity which is root
+10000 should take root 10 times as much as 1000
+my mark is of by around 2
+
+Even for 100,000 and 1,000,000
+According to the growth factor it should go from 
+40 to 126 but it goes from 40 to 83
+
+So It doesnt suit it that well ig but yeah
+
+
+
+
+okayyy checked asnwer ur code can be improve quiet a bit but its fine
+also as of 2008 computers are too fast for the numbers to be computed meaningfully
+so you have to try with bigger values

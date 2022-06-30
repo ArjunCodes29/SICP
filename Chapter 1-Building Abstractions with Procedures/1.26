@@ -1,0 +1,5 @@
+So by not using the square as a deffered operation 
+he is making 2 new expmods at each step
+this multiplies his time by 2 at each step which canels out the 
+log base 2
+making the growth factor n

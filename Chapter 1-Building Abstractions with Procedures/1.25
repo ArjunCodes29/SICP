@@ -1,0 +1,29 @@
+Im kinda stukc I feel like her solution is better
+I dont understand why in the orignal expmod you keep putting the remainder
+again as again as you recurse through the procedure so i am tracing it
+
+(expmod 3  4  5)
+(remainder (square (expmod 3 2 5)) 5)
+(remainder (square (remainder(square(expmod 3 1 5)) 5))5)
+(remainder (square (remainder(square(remainder (* 3 (expmod 3 0 5)) 5) 5))5)
+(remainder (square (remainder(square(remainder (* 3 1) 5) 5))5)
+(remainder (square (remainder(square(remainder 3 5) 5))5)
+(remainder (square (remainder 9 5))5)
+(remainder (square 4)5)
+(remainder 16 5)
+1
+
+New definition
+expmod 3 4 5
+remainder 81 5
+1
+
+So yes this system also works
+
+
+------------------
+Okay so what happened what is that even though her thing is techincally correct
+Her method of using fast-expt brings in much larger numbers into play 
+The remainder in the orignal expmod keeps the numbers small and simple-ish
+Which means that her method takes more computaional resources and time
+
