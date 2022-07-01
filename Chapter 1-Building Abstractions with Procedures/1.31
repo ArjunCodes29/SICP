@@ -1,0 +1,47 @@
+#lang sicp
+(define (product term a next b)
+  (if (> a b )
+      1
+      (* (term a)
+         (product term (next a) next b))))
+
+(define (factorial n)
+  (define (identity x)
+    x)
+  (product identity 1 inc n))
+
+(define (comp-pi b)
+  (define (denom-calc b)
+    (define (term-denom-calc a)
+       (cond ((odd? a) (term-denom-calc (+ a 1)))
+            (else (- (*  2 a) 1 ))))
+    (product term-denom-calc 1 inc b))
+  (define (num-calc b)
+    (define (term-num-calc a)
+      (cond ((= 1 a )(term-num-calc (* 2 a)))
+            ((odd? a) (term-num-calc (- a 1)))
+            (else (*  2 a))))
+    (product term-num-calc 1 inc b))
+  
+  (* 4 (/ (num-calc b) (denom-calc b))))
+
+
+(comp-pi 8)
+
+
+iterative
+(define (product term a next b)
+  (define (iter a result)
+  (if (> a b )
+      result
+      (iter (next a) (* (term a) result))))
+  (iter a 1))
+
+  ---
+   (define (pi-term n) 
+   (if (even? n) 
+       (/ (+ n 2) (+ n 1)) 
+       (/ (+ n 1) (+ n 2)))) 
+
+
+    this would fix ur code
