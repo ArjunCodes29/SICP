@@ -14,3 +14,10 @@
 
 (sum (lambda(x) x) 0 inc 10) ;triangle numbers
 (product (lambda(x) x) 1 inc 5) ;factorial
+
+(define (accumulate combiner null-value term a next b)
+  (define (iter a result)
+  (if (> a b)
+      result
+        (iter (next a) (combiner (term a) result))))
+      (iter a result))

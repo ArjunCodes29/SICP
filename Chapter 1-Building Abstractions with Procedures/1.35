@@ -1,0 +1,19 @@
+ golden ratio is defined as (I will be using o to represent golden ratio)
+
+o^2= o+ 1 ;divide both sides by o
+o= 1+ 1/o  
+
+Substituing o for x  into the transformation:
+1 + 1/o -> 1 + 1(1+ 1/o)
+We can subtitute the o in the left handside for its definition
+1 + 1/1 + 1/o 
+
+this is equal to RHS
+
+Therfore it is a fixed point of the function
+
+
+
+(fixed-point (lambda (x)(+ 1 (/ 1 x))) 1)
+result 1 377/610 (accurate)
+

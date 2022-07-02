@@ -1,0 +1,13 @@
+(f f)
+(f 2)
+It will have an error now because the procedure 
+f excpects procedures as arguments but its given an integers
+
+
+Ok so not exactly
+after 
+(f 2)
+It will be like
+( 2 2)
+and then it will say error
+
