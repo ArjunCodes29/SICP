@@ -1,0 +1,17 @@
+#lang sicp
+(define (compose f g)
+  (lambda (x) (f(g x))))
+
+(define (square a)
+  (* a a))
+
+(define (identity a) a)
+(define (repeated f n)
+  (define (itv n result)
+   
+    (if (= n 0)
+        result
+        (itv (- n 1) (compose result f))))
+  (itv n identity))
+
+((repeated square 2) 5)

@@ -1,0 +1,12 @@
+(((double (double double)) inc) 5)
+
+(define (double f)
+  (lambda (x) (f(f x))))
+
+(((double (double(double(f)))) inc) 5)
+
+(((double(double(double(double(inc))))) 5)
+adds 16
+
+21
+

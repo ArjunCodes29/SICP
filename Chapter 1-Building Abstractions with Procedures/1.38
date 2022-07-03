@@ -1,0 +1,16 @@
+(define (cont-frac n d k)
+  (define (itv a)
+    (if (= a k)
+        (/ (n k)(d k))
+        (/ (n a) (+ (d a) (itv (+ 1 a))))))
+  (itv 1))
+
+
+
+(+ 2 (cont-frac (lambda (i) 1.0)
+           (lambda (i)
+             (if (=(remainder i 3) 1)
+                   (* 2.0 (+ 1.0 (/ (- i 1.0) 3.0)))
+                   1.0))
+           100000))
+

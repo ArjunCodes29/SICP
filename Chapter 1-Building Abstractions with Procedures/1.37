@@ -1,0 +1,24 @@
+(define (cont-frac n d k)
+  (define (itv a)
+    (if (= a k)
+        (/ (n k)(d k))
+        (/ (n a) (+ (d a) (itv (+ 1 a))))))
+  (itv 1))
+
+(cont-frac (lambda (i) 1.0)
+           (lambda (i) 1.0)
+           11)
+
+With k as 11 I get my answer to 4 decimal places of accuracy
+
+#lang sicp
+(define (cont-frac n d k)
+  (define (itv a k result previous) ;a is a counter
+    (if (= a k)
+        result
+        (itv (+ a 1) k (/ previous  (/ (n (+ 1 a)) (+ (d (+ 1 a))))) result)))
+  (itv 1 k (/ (n 1) (+(d 1) (/ (n 2) (d 2)))) (/(n 1) (d 1))))
+
+(cont-frac (lambda (i) 1.0)
+           (lambda (i) 1.0)
+           100)
