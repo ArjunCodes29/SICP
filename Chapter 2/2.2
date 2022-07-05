@@ -1,0 +1,33 @@
+#lang sicp
+(define (print-point p)
+  (newline)
+  (display "(")
+  (display (xcor p))
+  (display ",")
+  (display (ycor p))
+  (display ")"))
+
+(define (make-segment x y)
+  (cons x y))
+(define (start-segment x)
+  (car x))
+(define (end-segment x)
+  (cdr x))
+
+(define (make-point x y)
+  (cons x y))
+(define (xcor x)
+  (car x))
+(define (ycor x)
+  (cdr x))
+
+(define (midpoint segment)
+  (make-point (/ (+(xcor(start-segment segment))(xcor(end-segment segment))) 2)
+              (/ (+(ycor(start-segment segment))(ycor(end-segment segment))) 2)))
+
+(define p1 (make-point 1.0 34))
+(define p2 (make-point 20 4))
+(define lineseg (make-segment p1 p2))
+(print-point (midpoint lineseg))
+  
+

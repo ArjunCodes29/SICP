@@ -1,0 +1,39 @@
+
+#lang sicp
+
+(define (iterative-improve good-enuf? improve)
+  (lambda (x)
+ 
+    (if (good-enuf? x)
+        x
+         ((iterative-improve good-enuf? improve)(improve x)))))
+
+(define (square x) (* x x))
+
+(define (sqrt n)
+  (define (good-enuf? guess )
+    (< (abs (- (square guess) n)) 0.001))
+  (define (improve x)
+    (define (average x n)
+      (/ (+ x n) 2))
+    (average x (/ n x)))
+  
+  ((iterative-improve good-enuf? improve) n))
+
+(sqrt 100000.0)
+
+(define (fixed-point f first-guess)
+  (define (good-enuf? guess )
+    (< (abs (- (f guess) guess)) 0.001))
+  (define (improve x)
+    (f x))
+  
+  ((iterative-improve good-enuf? improve) first-guess))
+
+ 
+(define (sqrt2 x)
+  (fixed-point (lambda (y) (/ x y))
+               1.0))
+
+(sqrt2 1)
+  
