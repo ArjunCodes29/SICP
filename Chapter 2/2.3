@@ -1,0 +1,94 @@
+#lang sicp
+
+(define (print-point p)
+  (newline)
+  (display "(")
+  (display (xcor p))
+  (display ",")
+  (display (ycor p))
+  (display ")"))
+
+(define (make-rectangle x y)
+  (cons x y))
+(define (line1 x)
+  (car x))
+(define (line2 x)
+  (cdr x))
+
+
+
+(define (make-linesegment x y)
+  (cons x y))
+(define (start-segment x)
+  (car x))
+(define (end-segment x)
+  (cdr x))
+
+(define (make-point x y)
+  (cons x y))
+(define (xcor x)
+  (car x))
+(define (ycor x)
+  (cdr x))
+
+(define (square x) (* x x))
+
+(define (sqrt-iter guess x)
+  (if (good-enough? guess x)
+      guess
+      (sqrt-iter (improve guess x)
+                 x)))
+(define (improve guess x)
+  (average guess (/ x guess)))
+(define (average x y)
+  (/ (+ x y) 2))
+(define (good-enough? guess x)
+  (< (abs (- (square guess) x)) 0.001))
+
+(define (find-perimeter x)
+  (define (length-line z)
+    (let ((x1 (xcor(start-segment z)))
+          (x2 (xcor(end-segment z)))
+          (y1 (ycor(start-segment z)))
+          (y2 (ycor(end-segment z))))
+      (sqrt (+(square(- x1 x2)) (square(- y1 y2))))))
+  (let ((line1 (line1 x))
+        (line2 (line2 x)))
+    (newline)
+    (display (length-line line1))
+    (newline)
+    (display (length-line line2))
+    (newline)
+    (*(+(length-line line1) (length-line line2))2)))
+
+(define p1 (make-point 0 0))
+(define p2 (make-point 0 5))
+(define p3 (make-point 5 5))
+(define l1 (make-linesegment p1 p2))
+(define l2 (make-linesegment p2 p3))
+(define rect (make-rectangle l1 l2))
+(find-perimeter rect)
+
+(define (find-area x)
+  (define (length-line z)
+    (let ((x1 (xcor(start-segment z)))
+          (x2 (xcor(end-segment z)))
+          (y1 (ycor(start-segment z)))
+          (y2 (ycor(end-segment z))))
+      (sqrt (+(square(- x1 x2)) (square(- y1 y2))))))
+  (let ((line1 (line1 x))
+        (line2 (line2 x)))
+    (newline)
+    (display (length-line line1))
+    (newline)
+    (display (length-line line2))
+    (newline)
+    (* (length-line line1) (length-line line2))))
+
+(find-area rect)
+  
+  
+
+
+  
+

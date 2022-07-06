@@ -1,0 +1,36 @@
+#lang sicp
+(define (cons a b)
+  (* (expt 2 a)(expt 3 b)))
+
+
+(define (car x)
+  (define (helper-itv x counter)
+    (cond ((not(=(remainder x 2)0))
+           counter)
+          ((=(remainder x 2)0)
+           (helper-itv (/ x 2)(+ 1 counter)))
+          ((=(remainder x 4)0)
+           (helper-itv (/ x 4) (+ 2 counter)))))
+  (helper-itv x 0))
+
+(define (cdr x)
+  (define (helper-itv x counter)
+    (cond ((not(=(remainder x 3)0))
+           counter)
+          ((=(remainder x 3)0)
+           (helper-itv (/ x 3)(+ 1 counter)))
+          ((=(remainder x 9)0)
+           (helper-itv (/ x 9) (+ 2 counter)))))
+  (helper-itv x 0))
+
+; Test
+(define t1 (cons 3 5))
+(display t1)
+(newline)
+(car t1)
+(cdr t1)
+
+
+             
+         
+  
