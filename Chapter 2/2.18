@@ -1,0 +1,27 @@
+#lang sicp
+(define (length list)
+    (if (null? list)
+        0
+        (+ 1 (length (cdr list)))))
+(define (index list n)
+    (if (= n 0)
+        (car list)
+        (index (cdr list) (- n 1))))
+(define (last-pair list)
+  (define lengthOfThisList (length list))
+  (cons (index list (- lengthOfThisList 1)) nil))
+
+(define (reverse list)
+  (define lnth (-(length list) 1 ))
+  (define (reverse-iter a b)
+    (newline)
+    (display a)
+    (newline)
+    (display b)
+    (newline)
+      (if (= a 0)
+          nil
+          (cons (index b a) (reverse-iter (- a 1) b))))
+  (reverse-iter lnth list))
+
+(reverse (list 1 4 9 16 25))

@@ -1,0 +1,22 @@
+This does not work because In the state variable area where hes defining
+What answers should become he says (cons (square (car things)) answer)
+So this automatiaclly puts the new item at the start of the list
+when it should be at the end of the list 
+
+The second one when you keep the list at the first and then the value
+You create a nested list its a syntax thign
+
+1 ]=> (cons 1 2)
+
+;Value 11: (1 . 2)
+
+1 ]=> (cons 1 (list 2 3))
+
+;Value 12: (1 2 3)
+
+1 ]=> (cons (list 2 3) 1)
+
+;Value 13: ((2 3) . 1)
+
+
+this is the syntax that messes things up    

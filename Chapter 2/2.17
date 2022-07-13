@@ -1,0 +1,18 @@
+#lang sicp
+; Last-pair
+; Written by Arjun Khandelwal on 11th July
+; Defines a procedure that returns the list that contains only the last element of a given list
+  (define (length list)
+    (if (null? list)
+        0
+        (+ 1 (length (cdr list)))))
+(define (last-pair list)
+  (define (index list n)
+    (if (= n 0)
+        (car list)
+        (index (cdr list) (- n 1))))
+  (define lengthOfThisList (length list))
+  (cons (index list (- lengthOfThisList 1)) nil))
+
+
+(last-pair (list 23 72 149 34))
