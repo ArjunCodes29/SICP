@@ -1,0 +1,32 @@
+#lang sicp
+(define (accumulate op initial sequence)
+  (if (null? sequence)
+      initial
+      (op (car sequence)
+          (accumulate op initial (cdr sequence)))))
+(define (recy-1st seqs)
+  (if (null? seqs)
+      nil
+      (cons (car (car seqs))
+            (recy-1st (cdr seqs)))))
+
+(define (recy-cutter seqs)
+  (if (null? seqs)
+      nil
+      (cons (cdr (car seqs))
+            (recy-cutter (cdr seqs)))))
+
+(define (accumulate-n op initial seqs)
+  (if (null? (car seqs))
+      nil
+      (cons (accumulate op initial (recy-1st seqs))
+            (accumulate-n op initial (recy-cutter seqs)))))
+
+ (define s (list (list 1 2 3 )(list 1 2 3)))
+
+  (accumulate-n + 0 s)
+
+
+; Looking at other people answers, my recy methods can be abstracted further into instances of map methods
+; so something simple as defining recy-1st as (map car sequence) would also work, and be a better design.
+      
