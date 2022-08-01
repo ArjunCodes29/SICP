@@ -1,0 +1,29 @@
+#lang sicp
+(define  (square-tree tree)
+  (cond ((null? tree) nil)
+        ((not(pair? tree)) (* tree tree))
+        (else (cons(square-tree (car tree))
+                   (square-tree (cdr tree))))))
+
+(square-tree
+ (list 1
+       (list 2 (list 3 4) 5)
+       (list 6 7)))
+
+(define (map proc list)
+  (cond ((null? list)
+         nil)
+        (else (cons (proc (car list))
+                    (map proc (cdr list) )))))
+
+(define (square-tree-HO tree)
+  (map (lambda (sub-tree)
+         (if (pair? sub-tree)
+             (square-tree-HO sub-tree)
+             (* sub-tree sub-tree)))
+       tree))
+
+(square-tree-HO
+ (list 1
+       (list 2 (list 3 4) 5)
+       (list 6 7)))
