@@ -5,6 +5,7 @@
 
 ## This program takes in a list of 10 numbers (the number of people livingin each house) and returns a list of 10 numbers ( the total sum of squares at if the garden was built at each location)
 import random
+import math
 
 
 
@@ -28,7 +29,7 @@ def get_minvalue(inputlist):
  
     #return the index of minimum value 
     min_index=inputlist.index(min_value)
-    return [min_index,min_value]
+    return min_index
 
 def checkUshaped(list):
     min = get_minvalue(list)
@@ -48,16 +49,59 @@ def checkUshaped(list):
     
     return True
 
-for i in range(10000):
+
+def optimalSolution(randomlist):
+    n = random.randint(0,14)
+    copy = n
+    total = 0
+    while(copy<(len(randomlist) -1)):
+        copy += 1
+        total += randomlist[copy]* (copy - n)
+    copy2 = n
+    while(copy2 > -1):
+        copy2 -= 1
+        total -= randomlist[copy2]* (n - copy2)
+    movementRequired= total/sum(randomlist)
+    return n+movementRequired
+
+##for i in range(50):
+   ## randomlist = random.sample(range(0, 15), 15)
+    ##answer = randomlist[:]
+    ##for count,value  in enumerate(randomlist):
+        ##answer[count]= calculator(randomlist,count)
+    ##print(get_minvalue(answer))
+    ##print(optimalSolution(randomlist))
+    ##print("--")
+
+def leftr(n):
     randomlist = random.sample(range(0, 15), 15)
     answer = randomlist[:]
     for count,value  in enumerate(randomlist):
         answer[count]= calculator(randomlist,count)
-    if(not checkUshaped(answer)):
-        print('false')
-    if(i==9999):
-        print('true')
+    copy = n
+    totalRight = 0
+    totalLeft =0
+    while(copy<(len(randomlist) -1)):
+        copy += 1
+        totalRight += randomlist[copy]* (copy - n)
+    copy2 = n
+    while(copy2 > -1):
+        copy2 -= 1
+        totalLeft += randomlist[copy2]* (n - copy2)
+    return [totalLeft,totalRight, optimalSolution(randomlist)]
 
+def StansTrickery(randomlist):
+    n = random.randint(0,15)
+    listlist = leftr(n)
+    difference = listlist[1]-listlist[0]
+    if(difference>0):
+        reportedLocation = n + math.sqrt(abs(difference))
+    else:
+        reportedLocation = n - math.sqrt(abs(difference))
+    return (reportedLocation,n)
 
-    
-
+randomlist = random.sample(range(0, 15), 15)
+print(randomlist)
+print(StansTrickery(randomlist))
+stansFakelist = [12, 11, 4, 10, 14, 7, 1, 2, 5, 0, 8, 13, 9, 6, 3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1]
+print(optimalSolution(stansFakelist))
